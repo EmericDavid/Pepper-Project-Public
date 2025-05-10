@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cercle Rouge Animation Simplifiée</title>
+    <style>
+        /* Styles de base */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            top: 50%;
+            margin-top: -200px;
+            /* Pour centrer sans flexbox */
+        }
+
+        /* Styles des anneaux avec préfixes vendeurs */
+        .ring {
+            position: absolute;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .ring-1 {
+            width: 140px;
+            height: 140px;
+            border-top-color: #ff0000;
+            border-right-color: #ff0000;
+            -webkit-animation: spin 8s linear infinite;
+            -moz-animation: spin 8s linear infinite;
+            animation: spin 8s linear infinite;
+        }
+
+        .ring-2 {
+            width: 180px;
+            height: 180px;
+            border-bottom-color: #ff5500;
+            border-left-color: #ff5500;
+            -webkit-animation: spin-reverse 6s linear infinite;
+            -moz-animation: spin-reverse 6s linear infinite;
+            animation: spin-reverse 6s linear infinite;
+        }
+
+        .ring-3 {
+            width: 220px;
+            height: 220px;
+            border-top-color: #ff2222;
+            border-right-color: #ff2222;
+            -webkit-animation: spin 10s linear infinite;
+            -moz-animation: spin 10s linear infinite;
+            animation: spin 10s linear infinite;
+        }
+
+        .ring-4 {
+            width: 260px;
+            height: 260px;
+            border-bottom-color: #ff3333;
+            border-left-color: #ff3333;
+            -webkit-animation: spin-reverse 12s linear infinite;
+            -moz-animation: spin-reverse 12s linear infinite;
+            animation: spin-reverse 12s linear infinite;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background-color: #ff0000;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-animation: pulse 2s infinite;
+            -moz-animation: pulse 2s infinite;
+            animation: pulse 2s infinite;
+        }
+
+        /* Animations avec préfixes vendeurs */
+        @-webkit-keyframes pulse {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                -webkit-transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            100% {
+                -webkit-transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @-moz-keyframes pulse {
+            0% {
+                -moz-transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                -moz-transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            100% {
+                -moz-transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @-moz-keyframes spin {
+            0% {
+                -moz-transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                -moz-transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin-reverse {
+            0% {
+                -webkit-transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        @-moz-keyframes spin-reverse {
+            0% {
+                -moz-transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                -moz-transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle-container">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="ring ring-4"></div>
+        <div class="circle"></div>
+    </div>
+
+    <script>
+        // Script compatible avec les anciens navigateurs
+        if (document.body.style) {
+            document.body.style.visibility = "hidden";
+        }
+
+        function showContent() {
+            if (document.body.style) {
+                document.body.style.visibility = "visible";
+            }
+        }
+
+        // Différentes façons de détecter le chargement de la page
+        if (window.addEventListener) {
+            window.addEventListener("load", showContent, false);
+        } else if (window.attachEvent) {
+            window.attachEvent("onload", showContent);
+        } else {
+            window.onload = showContent;
+        }
+    </script>
+</body>
+
+</html>

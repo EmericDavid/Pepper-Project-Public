@@ -1,0 +1,6 @@
+Flask
+SpeechRecognition
+google-generativeai
+pandas
+icalendar
+python-dotenv
